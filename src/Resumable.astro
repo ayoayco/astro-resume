@@ -1,7 +1,8 @@
 ---
+type Primitive = string | number | boolean | null | undefined;
 export interface Props {
     id: string;
-    data: Object;
+    data: Record<string, Primitive>;
 }
 const {id, data} = Astro.props;
 ---
