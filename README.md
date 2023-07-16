@@ -15,22 +15,19 @@ npm i @ayco/astro-resume
 
 ```astro
 ---
-import Resumable from '@ayco/astro-resume';
+import Resumable from "@ayco/astro-resume";
 const data = {
-    hello: 'world'
+	hello: 'world'
 }
 ---
 
 <Resumable id="astro-obj" data={data} />
 
-<div id="render-here"></div>
-
 <script>
-    import {resume} from '@ayco/astro-resume';
-    console.log(resume('astro-obj'));
-    const renderDiv = document.querySelector('#render-here');
-    if (renderDiv) {
-        renderDiv.innerHTML =  JSON.stringify(resume('astro-obj'))
-    }
+	import {resume} from '@ayco/astro-resume';
+	console.log(
+		resume('astro-obj')
+	)
 </script>
+
 ```
