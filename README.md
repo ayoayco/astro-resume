@@ -15,7 +15,7 @@ npm i @ayco/astro-resume
 
 ```astro
 ---
-import Resumable from '../Resumable.astro';
+import Resumable from '@ayco/astro-resume';
 const data = {
     hello: 'world'
 }
@@ -26,7 +26,7 @@ const data = {
 <div id="render-here"></div>
 
 <script>
-    import resume from '../resume';
+    import {resume} from '@ayco/astro-resume';
     console.log(resume('astro-obj'));
     const renderDiv = document.querySelector('#render-here');
     if (renderDiv) {
