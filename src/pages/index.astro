@@ -2,7 +2,8 @@
 import Resumable from '../Resumable.astro';
 const data = {
     hello: 'world'
-}
+};
+export type Data = typeof data;
 ---
 
 <Resumable id="astro-obj" data={data} />
@@ -11,9 +12,10 @@ const data = {
 
 <script>
     import {resume} from '../resume';
-    const data = resume<{hello:string}>('astro-obj');
+    import {Data} from './index.astro';
+    const data = resume<Data>('astro-obj');
 
-    data.hello;
+    console.log(data);
     const renderDiv = document.querySelector('#render-here');
     if (renderDiv) {
         renderDiv.innerHTML =  JSON.stringify(data)
