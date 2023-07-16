@@ -1,7 +1,15 @@
 {
-  "name": "resume",
+  "name": "@ayco/astro-resume",
   "type": "module",
   "version": "0.0.1",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "files": [
+    "src/Resumable.astro",
+    "src/resume.ts",
+    "index.ts"
+  ],
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
