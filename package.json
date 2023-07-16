@@ -4,7 +4,7 @@
   "repository": "https://git.sr.ht/~ayoayco/astro-resume",
   "homepage": "https://sr.ht/~ayoayco/astro-resume",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [
     "astro-component",
     "css",
