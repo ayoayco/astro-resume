@@ -60,9 +60,9 @@ export type Data = typeof data;
 	import {deserialize} from '@ayco/astro-resume';
 
 	/**
-     * reuse the type in the client
-	 * assuming this component's name is `Component.astro`
-	 */
+	* reuse the type in the client
+	* assuming this component's name is `Component.astro`
+	*/
 	import type {Data} from './Component.astro';
 
 	const data = deserialize<Data>('my-data');
