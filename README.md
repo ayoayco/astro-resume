@@ -5,7 +5,7 @@ Utilities for serializing data from server for use in the client.
 1. `Serialize` Astro component takes `id` and `data`
 1. `deserialize(id: string): Object` function for use int he client takes an `id` string and returns the `data` as Object
 
-## Installation & Usage
+## Installation & Examples
 
 ### Install via npm
 
@@ -61,13 +61,36 @@ export type Data = typeof data;
 
 	/**
 	* reuse the type in the client
-	* assuming this component's name is `Component.astro`
+	* assuming this component's name is `ThisComponent.astro`
 	*/
-	import type {Data} from './Component.astro';
+	import type {Data} from './ThisComponent.astro';
 
 	const data = deserialize<Data>('my-data');
 
 	console.log(data) // {hello: 'world', isOkay: true}
+</script>
+```
+
+### Passing all Astro.props to client
+
+If you need to make all the component props to the client script:
+
+```astro
+---
+import Serialize from "@ayco/astro-resume";
+export interface Props {
+	hello: string;
+	isOkay: boolean;
+}
+---
+
+<Serialize id="preferences" data={{...Astro.props}} />
+
+<script>
+	import {deserialize} from '@ayco/astro-resume';
+	import type {Props} from './ThisComponent.astro';
+	const {hello, isOkay} = deserialize<Props>('preferences');
+	console.log(hello, isOkay);
 </script>
 ```
 
