@@ -1,20 +1,21 @@
 ---
-import Resumable from '../Resumable.astro';
+import Serialize from "../Serialize.astro";
 const data = {
     name: 'John Doe',
     isOkay: true,
+    mood: null
 }
 export type Data = typeof data;
 ---
 
-<Resumable id="astro-obj" data={data} />
+<Serialize data={data} id="my-data" />
 
 <div id="render-here"></div>
 
 <script>
-    import {resume} from '../resume';
-    import {Data} from './index.astro';
-    const data = resume<Data>('astro-obj');
+    import { deserialize } from '../deserialize';
+import {Data} from './index.astro';
+    const data = deserialize<Data>('my-data');
 
     console.log(data);
     const renderDiv = document.querySelector('#render-here');

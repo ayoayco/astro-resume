@@ -14,8 +14,8 @@
     ".": "./index.ts"
   },
   "files": [
-    "src/Resumable.astro",
-    "src/resume.ts",
+    "src/Serialize.astro",
+    "src/deserialize.ts",
     "index.ts"
   ],
   "scripts": {

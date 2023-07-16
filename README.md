@@ -1,9 +1,9 @@
-# Astro Resume
+# Astro deserialize
 
 Utilities for serializing data from server for use in the client.
 
-1. `Resumable` Astro component takes `id` and `data`
-1. `resume(id: string): Object` function for use int he client takes an `id` string and returns the `data` as Object
+1. `Serialize` Astro component takes `id` and `data`
+1. `deserialize(id: string): Object` function for use int he client takes an `id` string and returns the `data` as Object
 
 ## Installation & Usage
 
@@ -21,18 +21,18 @@ Serializing and deserializing basic primitive data
 
 ```astro
 ---
-import Resumable from "@ayco/astro-resume";
+import Serialize from "@ayco/astro-resume";
 
 const data = {
 	hello: 'world',
 }
 ---
 
-<Resumable id="astro-obj" data={data} />
+<Serialize id="my-data" data={data} />
 
 <script>
-	import {resume} from '@ayco/astro-resume';
-	const data = resume('astro-obj');
+	import {deserialize} from '@ayco/astro-resume';
+	const data = deserialize('my-data');
 	console.log(data) // {hello: 'world'}
 </script>
 
@@ -44,7 +44,7 @@ You can define a type for the data and use it in the client script.
 
 ```astro
 ---
-import Resumable from "@ayco/astro-resume";
+import Serialize from "@ayco/astro-resume";
 
 const data = {
 	hello: 'world',
@@ -54,10 +54,10 @@ const data = {
 export type Data = typeof data;
 ---
 
-<Resumable id="astro-obj" data={data} />
+<Serialize id="my-data" data={data} />
 
 <script>
-	import {resume} from '@ayco/astro-resume';
+	import {deserialize} from '@ayco/astro-resume';
 
 	/**
      * reuse the type in the client
@@ -65,7 +65,7 @@ export type Data = typeof data;
 	 */
 	import type {Data} from './Component.astro';
 
-	const data = resume<Data>('astro-obj');
+	const data = deserialize<Data>('my-data');
 
 	console.log(data) // {hello: 'world'}
 </script>
