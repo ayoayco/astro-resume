@@ -1,7 +1,14 @@
 ---
 type Primitive = string | number | boolean | null | undefined;
+
 export interface Props {
+    /**
+     * The id that the client script will pass to the `resume()` function
+     */
     id: string;
+    /**
+     * The data to be serialized and accessed in the client script with `resume()`
+     */
     data: Record<string, Primitive>;
 }
 const {id, data} = Astro.props;
