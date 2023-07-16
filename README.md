@@ -67,7 +67,7 @@ export type Data = typeof data;
 
 	const data = deserialize<Data>('my-data');
 
-	console.log(data) // {hello: 'world'}
+	console.log(data) // {hello: 'world', isOkay: true}
 </script>
 ```
 
