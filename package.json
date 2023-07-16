@@ -10,6 +10,7 @@
     "css",
     "ui"
   ],
+  "license": "MIT",
   "exports": {
     ".": "./index.ts"
   },
