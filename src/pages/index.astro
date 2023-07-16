@@ -11,9 +11,11 @@ const data = {
 
 <script>
     import {resume} from '../resume';
-    console.log(resume('astro-obj'));
+    const data = resume<{hello:string}>('astro-obj');
+
+    data.hello;
     const renderDiv = document.querySelector('#render-here');
     if (renderDiv) {
-        renderDiv.innerHTML =  JSON.stringify(resume('astro-obj'))
+        renderDiv.innerHTML =  JSON.stringify(data)
     }
 </script>
