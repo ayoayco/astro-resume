@@ -31,3 +31,8 @@ const data = {
 </script>
 
 ```
+
+## Found issues?
+
+Send a plain text email to [~ayoayco/astro-resume@todo.sr.ht](mailto:~ayoayco/astro-resume@todo.sr.ht) or report via [SourceHut](https://todo.sr.ht/~ayoayco/astro-resume)
+
