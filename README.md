@@ -96,7 +96,7 @@ export interface Props {
 
 ## What's happening here?
 
-This is a quick and easy pattern to embed serialized information into your HTML and make it available in the client-side script.
+This is a quick and easy pattern to embed serialized information into your HTML and make it available in the client-side script with type safety.
 
 The `Serialize` component will write the data as JSON wrapped in a `<script type="application/json">` element to hold the string.
 
@@ -106,7 +106,11 @@ There is also a pattern [given in the Astro docs](https://docs.astro.build/en/gu
 
 ## Trade-Off
 
-You have to manage the IDs yourself (i.e., make sure they are unique) and understand that the `deserialize()` function will crawl the whole document incurring a minimal performance cost depending on how big your HTML is.
+Some other frameworks themselves will manage serialized information and the IDs for you, but we don't have access to this in Astro as we are not really shipping a framework to the browser.
+
+That's nice and ideal (in my opinion), as we are aware of how the HTML is formed and what we are shipping to our users. The trade off is that we do have to manage things ourselves.
+
+You have to manage the IDs (i.e., make sure they are unique) and understand that the `deserialize()` function will crawl the whole document incurring a minimal performance cost depending on how big your HTML is.
 
 ## Reporting Issues
 
