@@ -1,8 +1,8 @@
 export function deserialize<T = any>(id: string): T {
-    const element = document.querySelector<HTMLTextAreaElement>(`#${id}`);
+    const element = document.querySelector<HTMLScriptElement>(`#${id}`);
 
-    if (element?.value)
-        return JSON.parse(element.value)
+    if (element?.innerText)
+        return JSON.parse(element.innerText)
         
     throw Error(`The call deserialize('${id}') did not find any data.
     Check that the following are correct:

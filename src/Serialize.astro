@@ -14,4 +14,4 @@ export interface Props {
 const {id, data} = Astro.props;
 ---
 
-<textarea hidden id={id}>{JSON.stringify(data)}</textarea>
+<script type="application/json" id={id} set:html={JSON.stringify(data)}></script>

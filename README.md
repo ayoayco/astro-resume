@@ -96,13 +96,17 @@ export interface Props {
 
 ## What's happening here?
 
-For simple applications with just a few components, this is a quick pattern to embed serialized information into your HTML. The `Serialize` component will do this for you, currently by using a hidden `textarea` element to hold the string.
+This is a quick and easy pattern to embed serialized information into your HTML and make it available in the client-side script.
 
-The `deserialize()` function can then parse the value string for use in your client script. You have to manage the IDs yourself (i.e., make sure they are unique) and understand that the `deserialize()` function will crawl the whole document incurring some performance cost.
+The `Serialize` component will write the data as JSON wrapped in a `<script type="application/json">` element to hold the string.
 
-Another approach we see in other frameworks is embedding JSON in your HTML and the frameworks themselves managing/tracking the IDs for you, but we don't have access to this in Astro as we are not really shipping a framework to the browser. That's nice and ideal (in my opinion), but we do have to manage things ourselves.
+The `deserialize()` function can then parse the value string for use in your client script.
 
-There is a pattern [given in the Astro docs](https://docs.astro.build/en/guides/client-side-scripts/#pass-frontmatter-variables-to-scripts) to use a Custom Element that takes a `data-` prop which properly protects the scope of your component. That is a good pattern to follow for complex applications that don't use UI frameworks.
+There is also a pattern [given in the Astro docs](https://docs.astro.build/en/guides/client-side-scripts/#pass-frontmatter-variables-to-scripts) to use a Custom Element that takes a `data-` prop which properly protects the scope of your component. That is a good pattern to follow for complex applications that don't use UI frameworks.
+
+## Trade-Off
+
+You have to manage the IDs yourself (i.e., make sure they are unique) and understand that the `deserialize()` function will crawl the whole document incurring a minimal performance cost depending on how big your HTML is.
 
 ## Reporting Issues
 
