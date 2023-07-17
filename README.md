@@ -100,7 +100,7 @@ For simple applications with just a few components, this is a quick pattern to e
 
 The `deserialize()` function can then parse the value string for use in your client script. You have to manage the IDs yourself (i.e., make sure they are unique) and understand that the `deserialize()` function will crawl the whole document incurring some performance cost.
 
-Another approach we see in other frameworks is embedding JSON in your HTML and the frameworks themselves managing/tracking the IDs for you, but we don't have access to this yet in Astro. 
+Another approach we see in other frameworks is embedding JSON in your HTML and the frameworks themselves managing/tracking the IDs for you, but we don't have access to this in Astro as we are not really shipping a framework to the browser. That's nice and ideal (in my opinion), but we do have to manage things ourselves.
 
 There is a pattern [given in the Astro docs](https://docs.astro.build/en/guides/client-side-scripts/#pass-frontmatter-variables-to-scripts) to use a Custom Element that takes a `data-` prop which properly protects the scope of your component. That is a good pattern to follow for complex applications that don't use UI frameworks.
 
