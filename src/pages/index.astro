@@ -14,12 +14,12 @@ export type Data = typeof data;
 
 <script>
     import { deserialize } from '../deserialize';
-import {Data} from './index.astro';
-    const data = deserialize<Data>('my-data');
+    import {Data} from './index.astro';
 
+    const data = deserialize<Data>('my-data');
     console.log(data);
     const renderDiv = document.querySelector('#render-here');
     if (renderDiv) {
-        renderDiv.innerHTML =  JSON.stringify(data)
+        renderDiv.textContent =  JSON.stringify(data)
     }
 </script>
