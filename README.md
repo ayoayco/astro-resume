@@ -13,7 +13,7 @@ The `deserialize()` function can then parse the value string for use in your cli
 
 This is not the best way to do this though. Other frameworks might do this by embedding JSON in your HTML and managing/tracking the IDs for you, but we don't have access to this yet in Astro. You have to manage the IDs yourself and understand the the `deserialize()` function will crawl the whole document.
 
-There is a pattern given in the Astro docs to use a Custom Element that takes a `data-` prop which properly protects the scope of your component. That is a good pattern to follow for complex applications that don't use UI frameworks.
+There is a pattern [given in the Astro docs](https://docs.astro.build/en/guides/client-side-scripts/#pass-frontmatter-variables-to-scripts) to use a Custom Element that takes a `data-` prop which properly protects the scope of your component. That is a good pattern to follow for complex applications that don't use UI frameworks.
 
 ## Installation & Examples
 
