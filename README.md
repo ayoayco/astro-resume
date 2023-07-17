@@ -2,8 +2,8 @@
 
 Utilities for serializing data from server for use in the client.
 
-1. `Serialize` Astro component takes `id` and `data`
-1. `deserialize(id: string)` function for use int he client takes an `id` string and returns the `data`
+1. `Serialize` - Astro component that takes `id` and `data`
+1. `deserialize(id: string)` - a function for use in the client that takes an `id` string and returns the `data` object
 
 ## Installation & Examples
 
