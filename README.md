@@ -9,9 +9,9 @@ Utilities for serializing data from server for use in the client.
 
 For simple applications with just a few components, this is a quick pattern to embed serialized information into your HTML. The `Serialize` component will do this for you, currently by using a hidden `textarea` element to hold the string.
 
-The `deserialize()` function can then parse the value string for use in your client script.
+The `deserialize()` function can then parse the value string for use in your client script. You have to manage the IDs yourself (i.e., make sure they are unique) and understand that the `deserialize()` function will crawl the whole document incurring some minimal performance.
 
-This is not the best way to do this though. Other frameworks might do this by embedding JSON in your HTML and managing/tracking the IDs for you, but we don't have access to this yet in Astro. You have to manage the IDs yourself and understand the the `deserialize()` function will crawl the whole document.
+Another approach we see in other frameworks is embedding JSON in your HTML and the frameworks themselves managing/tracking the IDs for you, but we don't have access to this yet in Astro. 
 
 There is a pattern [given in the Astro docs](https://docs.astro.build/en/guides/client-side-scripts/#pass-frontmatter-variables-to-scripts) to use a Custom Element that takes a `data-` prop which properly protects the scope of your component. That is a good pattern to follow for complex applications that don't use UI frameworks.
 
