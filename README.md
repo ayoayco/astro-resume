@@ -96,7 +96,9 @@ export interface Props {
 
 ### Using a custom serializer and parser
 
-You can bring your own serializer/parser. For serializing data that `JSON.parse` cannot parse (e.g., Date or BigInt), here's an example of using Rich Harris' `devalue`
+If you want to opt for more complex data, you can bring your custom serializer/parser.
+
+Here's an example of serializing data that `JSON.stringify` cannot (e.g., Date or BigInt) using Rich Harris' [`devalue`](https://github.com/Rich-Harris/devalue):
 
 ```astro
 ---
@@ -124,6 +126,12 @@ export type Data = typeof data;
     console.log(data.now instanceof Date); // true
 </script>
 ```
+
+### Errors & Warning in `deserialize()`
+
+The `deserialize()` function may give you the following:
+1. **ERR: No match found** - there are no `JSON` scripts with the given ID  
+1. **WARNING: Multiple matches for <id>** - there were multiple `JSON` scripts found with the same ID
 
 ## About
 

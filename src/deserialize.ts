@@ -28,7 +28,7 @@
  * ```
  **/
 export function deserialize<T = any>(id: string, parser?: (serialized: string)=>any): T {
-    const elements = document.querySelectorAll<HTMLScriptElement>(`#${id}`);
+    const elements = document.querySelectorAll<HTMLScriptElement>(`script#${id}[type="application/json"]`);
 
     if (elements?.length > 0) {
         if (elements?.length > 1)
