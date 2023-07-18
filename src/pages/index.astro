@@ -1,27 +1,23 @@
 ---
-import { stringify } from 'devalue';
 import Serialize from "../Serialize.astro";
 const data = {
     name: 'John Doe',
     isOkay: true,
     mood: null,
-    now: new Date(),
-    age: BigInt('3218378192378')
+    // now: new Date(),
+    // age: BigInt('3218378192378')
 }
 export type Data = typeof data;
 ---
 
 <div id="render-here"></div>
-<Serialize data={data} id="my-data" use={stringify} />
+<Serialize data={data} id="my-data" />
 
 <script>
     import { deserialize } from '../deserialize';
-    import { parse, stringify } from 'devalue';
     import type { Data } from './index.astro';
 
-    const data = deserialize<Data>('my-data', parse);
+    const data = deserialize<Data>('my-data');
     console.log(data);
-    console.log(typeof data.age);
-    console.log(data.now instanceof Date);
-    document.getElementById("render-here").innerHTML = stringify(data)
+    document.getElementById("render-here").innerHTML = JSON.stringify(data)
 </script>

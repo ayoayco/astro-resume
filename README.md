@@ -3,11 +3,9 @@
 Utilities for serializing data from server for use in the client.
 
 1. `Serialize` - Astro component that takes `id` and `data`
-1. `deserialize(id: string)` - a function for use in the client that takes an `id` string and returns the `data` object
+1. `deserialize()` - a function for use in the client that takes an `id` string and returns the `data` object
 
-## Installation & Examples
-
-### Install via npm
+## Install via npm
 
 On your [Astro](https://astro.build) project:
 
@@ -15,7 +13,7 @@ On your [Astro](https://astro.build) project:
 npm i @ayco/astro-resume
 ```
 
-### Usage
+## Usage
 
 Serializing and deserializing basic primitive data
 
@@ -38,7 +36,7 @@ const data = {
 
 ```
 
-### Type Safety
+## Type Safety
 
 You can define a type for the data and use it in the client script.
 
@@ -71,7 +69,7 @@ export type Data = typeof data;
 </script>
 ```
 
-### Passing all Astro.props to client
+## Passing all Astro.props to client
 
 If you need to make all the component props to the client script:
 
@@ -94,20 +92,17 @@ export interface Props {
 </script>
 ```
 
-### Using a custom serializer and parser
+## Using a custom serializer and parser
 
-If you want to opt for more complex data, you can bring your custom serializer/parser.
+You can bring your own custom serializer/parser if you want to opt for more complex data handling.
 
 Here's an example of serializing data that `JSON.stringify` cannot (e.g., Date or BigInt) using Rich Harris' [`devalue`](https://github.com/Rich-Harris/devalue):
 
 ```astro
 ---
 import {stringify} from 'devalue';
-import Serialize from "../Serialize.astro";
+import Serialize from "@ayco/astro-resume";
 const data = {
-    name: 'John Doe',
-    isOkay: true,
-    mood: null,
     now: new Date(),
     age: BigInt('3218378192378')
 }
@@ -117,17 +112,17 @@ export type Data = typeof data;
 <Serialize data={data} id="my-data" use={stringify} />
 
 <script>
-    import { parse } from 'devalue';
-    import { deserialize } from '../deserialize';
-    import type { Data } from './index.astro';
+    import {parse} from 'devalue';
+    import {deserialize} from '@ayco/astro-resume';
+    import type {Data} from './index.astro';
 
-    const data = deserialize<Data>('my-data', parse);
-    console.log(typeof data.age); // 'bigint'
-    console.log(data.now instanceof Date); // true
+    const {age, now} = deserialize<Data>('my-data', parse);
+    console.log(typeof age); // 'bigint'
+    console.log(now instanceof Date); // true
 </script>
 ```
 
-### Errors & Warning in `deserialize()`
+## Errors & Warning in `deserialize()`
 
 The `deserialize()` function may give you the following:
 1. **ERR: No match found** - there are no `JSON` scripts with the given ID  
