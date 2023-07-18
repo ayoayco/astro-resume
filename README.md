@@ -112,6 +112,10 @@ That's nice and ideal (in my opinion), as we are aware of how the HTML is formed
 
 You have to manage the IDs (i.e., make sure they are unique) and understand that the `deserialize()` function will crawl the whole document incurring a minimal performance cost depending on how big your HTML is.
 
+## Road Map
+
+See the [TODO tracker](https://todo.sr.ht/~ayoayco/astro-resume) for planned work items.
+
 ## Reporting Issues
 
 To report issues or request features, send a plain text email to [~ayoayco/astro-resume@todo.sr.ht](mailto:~ayoayco/astro-resume@todo.sr.ht) or file a ticket via [SourceHut](https://todo.sr.ht/~ayoayco/astro-resume)
