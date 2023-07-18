@@ -1,5 +1,5 @@
 ---
-type Primitive = string | number | boolean | null | undefined;
+// type Primitive = string | number | boolean | null | undefined;
 
 export interface Props {
     /**
@@ -9,9 +9,20 @@ export interface Props {
     /**
      * The data to be serialized and accessed in the client script with `deserialize()`
      */
-    data: Record<string, Primitive>;
+    data: Record<string, any>;
+    /**
+     * Custom serializer to be used
+     * @param data 
+     */
+    use?: (data: Record<string, any>) => string;
 }
-const {id, data} = Astro.props;
+const {id, data, use} = Astro.props;
+let serializedData = '{}'
+try {
+    serializedData = use ? use(data) : JSON.stringify(data);
+} catch(err) {
+    throw Error(err)
+}
 ---
 
-<script type="application/json" id={id} set:html={JSON.stringify(data)}></script>
+<script type="application/json" id={id} set:html={serializedData}></script>

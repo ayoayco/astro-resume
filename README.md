@@ -94,7 +94,38 @@ export interface Props {
 </script>
 ```
 
-## What's happening here?
+### Using a custom serializer and parser
+
+You can bring your own serializer/parser. For serializing data that `JSON.parse` cannot parse (e.g., Date or BigInt), here's an example of using Rich Harris' `devalue`
+
+```astro
+---
+import {stringify} from 'devalue';
+import Serialize from "../Serialize.astro";
+const data = {
+    name: 'John Doe',
+    isOkay: true,
+    mood: null,
+    now: new Date(),
+    age: BigInt('3218378192378')
+}
+export type Data = typeof data;
+---
+
+<Serialize data={data} id="my-data" use={stringify} />
+
+<script>
+    import { parse } from 'devalue';
+    import { deserialize } from '../deserialize';
+    import type { Data } from './index.astro';
+
+    const data = deserialize<Data>('my-data', parse);
+    console.log(typeof data.age); // 'bigint'
+    console.log(data.now instanceof Date); // true
+</script>
+```
+
+## About
 
 This is a quick and easy pattern to embed serialized information into your HTML and make it available in the client-side script with type safety.
 
