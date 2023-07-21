@@ -21,6 +21,7 @@ let serializedData = '{}'
 try {
     serializedData = use ? use(data) : JSON.stringify(data);
 } catch(err) {
+    // extend error for helpful messages and guides
     throw Error(err)
 }
 ---
