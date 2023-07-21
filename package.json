@@ -26,7 +26,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/node": "^5.3.0",
     "astro": "^2.8.4"
+  },
+  "devDependencies": {
+    "@astrojs/node": "^5.3.0",
+    "devalue": "^4.3.2"
   }
 }
