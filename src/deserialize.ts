@@ -32,7 +32,7 @@ export function deserialize<T = any>(id: string, parser?: (serialized: string)=>
 
     if (elements?.length > 0) {
         if (elements?.length > 1)
-            console.warn(`WARNING: Multiple matches for "${id}". There are ${elements?.length} matches found for ID: "${id}". The function will parse the first match found.`)
+            console.warn(`astro-resume WARN: Multiple matches for "${id}". The function will parse the first one.`)
 
         const element = elements[0];
 
@@ -42,7 +42,7 @@ export function deserialize<T = any>(id: string, parser?: (serialized: string)=>
                 : JSON.parse(element.textContent)
     }
         
-    throw Error(`ERR: No match found.
+    throw Error(`astro-resume ERR: No match found.
     "deserialize('${id}')" did not find any data.
     Check that the following are correct:
     - The Serialize component is used with correct props

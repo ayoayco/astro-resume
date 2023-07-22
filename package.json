@@ -25,7 +25,7 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "dependencies": {
+  "peerDependencies": {
     "astro": "^2.8.4"
   },
   "devDependencies": {
