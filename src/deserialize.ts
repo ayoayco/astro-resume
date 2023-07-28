@@ -4,29 +4,7 @@
  * @param parser Custom parser to be used
  * @returns The deserialized JSON data
  * @see Usage examples in 👉 https://git.sr.ht/~ayoayco/astro-resume#astro-resume
- * @example
- * 
- * To make all `Astro.props` available in your client script:
- *
- * ```astro
- * ---
- * import Serialize from "@ayco/astro-resume";
- * export interface Props {
- * 	hello: string;
- * 	isOkay: boolean;
- * }
- * ---
- * 
- * <Serialize id="preferences" data={{...Astro.props}} />
- * 
- * <script>
- * 	import {deserialize} from '@ayco/astro-resume';
- * 	import type {Props} from './ThisComponent.astro';
- * 	const {hello, isOkay} = deserialize<Props>('preferences');
- * 	console.log(hello, isOkay);
- * </script>
- * ```
- **/
+**/
 export function deserialize<T = any>(id: string, parser?: (serialized: string)=>any): T {
     const elements = document.querySelectorAll<HTMLScriptElement>(`script#${id}[type="application/json"]`);
 
