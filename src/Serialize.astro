@@ -21,8 +21,15 @@ let serializedData = '{}'
 try {
     serializedData = use ? use(data) : JSON.stringify(data);
 } catch(err) {
-    // extend error for helpful messages and guides
-    throw Error('astro-resume ERR:', err)
+    /**
+     *  ERR: data is unserializable
+     *  - You might need a custom serializer/parser for complex data
+     *  - Usage examples in 👉 https://git.sr.ht/~ayoayco/astro-resume#astro-resume
+     */
+    throw Error(`astro-resume ERR: Data unserializable
+- You might need a custom serializer/parser for complex data
+- Usage examples in 👉 https://git.sr.ht/~ayoayco/astro-resume#astro-resume
+    `, err)
 }
 ---
 
