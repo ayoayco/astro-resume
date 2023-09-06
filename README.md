@@ -92,6 +92,51 @@ export interface Props {
 </script>
 ```
 
+## Serialize server data once, access everywhere
+
+If you have shared data that needs to be initialized from the server and accessed in several places on the client-side, you can use `Serialize` once and `deserialize` in any number of Astro components as long as they are in the same page.
+
+In this example, an appConfig object is built and serialized in index.astro and accessed in child Astro components.
+
+In index.astro:
+```astro
+import Serialize from "@ayco/astro-resume";
+
+const appConfig = {
+	someClientSideKey: '1234hello',
+}
+export type AppConfig = typeof appConfig;
+---
+
+<Serialize id="app-config" data={appConfig} />
+<Child />
+```
+
+In Child.astro:
+```astro
+<h1>I'm a child. I have access to the appConfig in index!</h1>
+<GrandChild />
+<script>
+	import {deserialize} from '@ayco/astro-resume';
+	import type {AppConfig} from '..pages/index.astro';
+	const data = deserialize<AppConfig>('app-config');
+
+	// ... do something with the app config
+</script>
+```
+
+In GrandChild.astro:
+```astro
+<h1>I'm a grand child. I also have access to the appConfig in index!</h1>
+<script>
+	import {deserialize} from '@ayco/astro-resume';
+	import type {AppConfig} from '..pages/index.astro';
+	const data = deserialize<AppConfig>('app-config');
+
+	// ... do something with the app config
+</script>
+```
+
 ## Using a custom serializer and parser
 
 You can bring your own custom serializer/parser if you want to opt for more complex data handling.
