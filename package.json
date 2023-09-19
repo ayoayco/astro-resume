@@ -28,9 +28,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "build:publish": "astro build && npm publish --access public",
-    "publish:patch": "npm version patch && npm run build:publish",
-    "publish:minor": "npm version minor && npm run build:publish"
+    "publish:patch": "npm version patch && npm publish --access public",
+    "publish:minor": "npm version minor && npm publish --access public"
   },
   "devDependencies": {
     "devalue": "^4.3.2"
