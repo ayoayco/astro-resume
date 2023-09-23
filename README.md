@@ -1,3 +1,5 @@
+> **TL;DR:** This facilitates the *creation* and *usage* of global, immutable data for [Astro](https://astro.build) apps
+
 # Astro Resume
 
 Utilities for serializing data from server for use in the client.
