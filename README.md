@@ -1,4 +1,4 @@
-> **TL;DR:** This facilitates the *creation* and *usage* of global, immutable data for [Astro](https://astro.build) apps
+> **>>> TL;DR:** This facilitates the *creation* and *usage* of global, immutable data for [Astro](https://astro.build) apps
 
 # Astro Resume
 
