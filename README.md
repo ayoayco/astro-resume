@@ -31,9 +31,9 @@ const data = {
 <Serialize id="my-data" data={data} />
 
 <script>
-	import {deserialize} from '@ayco/astro-resume';
-	const data = deserialize('my-data');
-	console.log(data) // {hello: 'world'}
+import {deserialize} from '@ayco/astro-resume';
+const data = deserialize('my-data');
+console.log(data) // {hello: 'world'}
 </script>
 
 ```
@@ -57,17 +57,17 @@ export type Data = typeof data;
 <Serialize id="my-data" data={data} />
 
 <script>
-	import {deserialize} from '@ayco/astro-resume';
+import {deserialize} from '@ayco/astro-resume';
 
-	/**
-	* reuse the type in the client
-	* assuming this component's name is `ThisComponent.astro`
-	*/
-	import type {Data} from './ThisComponent.astro';
+/**
+* reuse the type in the client
+* assuming this component's name is `ThisComponent.astro`
+*/
+import type {Data} from './ThisComponent.astro';
 
-	const data = deserialize<Data>('my-data');
+const data = deserialize<Data>('my-data');
 
-	console.log(data) // {hello: 'world', isOkay: true}
+console.log(data) // {hello: 'world', isOkay: true}
 </script>
 ```
 
@@ -87,10 +87,10 @@ export interface Props {
 <Serialize id="preferences" data={{...Astro.props}} />
 
 <script>
-	import {deserialize} from '@ayco/astro-resume';
-	import type {Props} from './ThisComponent.astro';
-	const {hello, isOkay} = deserialize<Props>('preferences');
-	console.log(hello, isOkay);
+import {deserialize} from '@ayco/astro-resume';
+import type {Props} from './ThisComponent.astro';
+const {hello, isOkay} = deserialize<Props>('preferences');
+console.log(hello, isOkay);
 </script>
 ```
 
@@ -119,11 +119,11 @@ In Child.astro:
 <h1>I'm a child. I have access to the appConfig in index!</h1>
 <GrandChild />
 <script>
-	import {deserialize} from '@ayco/astro-resume';
-	import type {AppConfig} from '..pages/index.astro';
-	const data = deserialize<AppConfig>('app-config');
+import {deserialize} from '@ayco/astro-resume';
+import type {AppConfig} from '..pages/index.astro';
+const data = deserialize<AppConfig>('app-config');
 
-	// ... do something with the app config
+// ... do something with the app config
 </script>
 ```
 
@@ -131,11 +131,11 @@ In GrandChild.astro:
 ```astro
 <h1>I'm a grand child. I also have access to the appConfig in index!</h1>
 <script>
-	import {deserialize} from '@ayco/astro-resume';
-	import type {AppConfig} from '..pages/index.astro';
-	const data = deserialize<AppConfig>('app-config');
+import {deserialize} from '@ayco/astro-resume';
+import type {AppConfig} from '..pages/index.astro';
+const data = deserialize<AppConfig>('app-config');
 
-	// ... do something with the app config
+// ... do something with the app config
 </script>
 ```
 
@@ -159,13 +159,13 @@ export type Data = typeof data;
 <Serialize data={data} id="my-data" use={stringify} />
 
 <script>
-    import {parse} from 'devalue';
-    import {deserialize} from '@ayco/astro-resume';
-    import type {Data} from './index.astro';
+import {parse} from 'devalue';
+import {deserialize} from '@ayco/astro-resume';
+import type {Data} from './index.astro';
 
-    const {age, now} = deserialize<Data>('my-data', parse);
-    console.log(typeof age); // 'bigint'
-    console.log(now instanceof Date); // true
+const {age, now} = deserialize<Data>('my-data', parse);
+console.log(typeof age); // 'bigint'
+console.log(now instanceof Date); // true
 </script>
 ```
 
