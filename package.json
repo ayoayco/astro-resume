@@ -32,9 +32,9 @@
     "publish:minor": "npm version minor && npm publish --access public"
   },
   "devDependencies": {
-    "devalue": "^4.3.2"
+    "devalue": "^5.0.0"
   },
   "peerDependencies": {
-    "astro": "^4.0.3"
+    "astro": "^4.12.2"
   }
 }
