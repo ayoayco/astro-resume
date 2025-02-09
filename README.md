@@ -1,4 +1,5 @@
-> **>>> TL;DR:** This facilitates the *creation* and *usage* of global, immutable data for [Astro](https://astro.build) apps
+> [!NOTE]
+> This project moved to [SourceHut](https://git.sr.ht/~ayoayco/astro-resume).
 
 # Astro Resume
 
@@ -176,7 +177,7 @@ console.log(now instanceof Date); // true
 ## Errors & Warning in `deserialize()`
 
 The `deserialize()` function may give you the following:
-1. **ERR: No match found** - there are no `JSON` scripts with the given ID  
+1. **ERR: No match found** - there are no `JSON` scripts with the given ID
 1. **WARNING: Multiple matches for <id>** - there were multiple `JSON` scripts found with the same ID
 
 ## About
@@ -204,4 +205,3 @@ See the [TODO tracker](https://todo.sr.ht/~ayoayco/astro-resume) for planned wor
 ## Reporting Issues
 
 To report issues or request features, send a plain text email to [~ayoayco/astro-resume@todo.sr.ht](mailto:~ayoayco/astro-resume@todo.sr.ht) or file a ticket via [SourceHut](https://todo.sr.ht/~ayoayco/astro-resume)
-
