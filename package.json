@@ -35,6 +35,6 @@
     "devalue": "^5.1.1"
   },
   "peerDependencies": {
-    "astro": "^4.12.2"
+    "astro": "^5"
   }
 }
