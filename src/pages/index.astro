@@ -2,43 +2,43 @@
 import Serialize from "../Serialize.astro";
 import { stringify } from "devalue";
 const data = {
-    name: 'John Doe',
-    isOkay: true,
-    mood: null,
-    now: new Date(),
-    age: BigInt('3218378192378')
-}
+  nameStr: "John Doe",
+  isOkayBool: true,
+  moodNull: null,
+  nowDate: new Date(),
+  ageBigInt: BigInt("3218378192378"),
+};
 export type Data = typeof data;
 ---
 
 <div id="render-here"></div>
-<Serialize data={data} id="my-data" use={stringify}/>
+<Serialize data={data} id="my-data" use={stringify} />
 
 <script>
-    import { deserialize } from '../deserialize';
-    import { parse } from 'devalue';
-    import type { Data } from './index.astro';
+  import { deserialize } from "../deserialize";
+  import { parse } from "devalue";
+  import type { Data } from "./index.astro";
 
-    const data = deserialize<Data>('my-data', parse);
-    console.log(data);
+  const data = deserialize<Data>("my-data", parse);
+  console.log(data);
 
-    Object.keys(data).forEach(key => console.log(key, data[key], typeof data[key]))
+  Object.keys(data).forEach((key) =>
+    console.log(key, data[key], typeof data[key])
+  );
 
-    // render table to render-here
-    const table = document.createElement('table');
-    const tbody = document.createElement('tbody');
-    table.appendChild(tbody);
-    Object.keys(data).forEach(key => {
-        const tr = document.createElement('tr');
-        const tdKey = document.createElement('td');
-        const tdValue = document.createElement('td');
-        tdKey.textContent = key;
-        tdValue.textContent = data[key];
-        tr.appendChild(tdKey);
-        tr.appendChild(tdValue);
-        tbody.appendChild(tr);
-    });
-    document.getElementById('render-here').appendChild(table);
-
-
+  // render table to render-here
+  const table = document.createElement("table");
+  const tbody = document.createElement("tbody");
+  table.appendChild(tbody);
+  Object.keys(data).forEach((key) => {
+    const tr = document.createElement("tr");
+    const tdKey = document.createElement("td");
+    const tdValue = document.createElement("td");
+    tdKey.textContent = key;
+    tdValue.textContent = data[key];
+    tr.appendChild(tdKey);
+    tr.appendChild(tdValue);
+    tbody.appendChild(tr);
+  });
+  document.getElementById("render-here").appendChild(table);
 </script>
